@@ -78,7 +78,7 @@ public class deviceControl extends AppCompatActivity {
             }
         }
     }
-
+    //jdksjlfksjdlfjslkdjflsjdlfkjslkdjfl
     private void msg(String s)
     {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
