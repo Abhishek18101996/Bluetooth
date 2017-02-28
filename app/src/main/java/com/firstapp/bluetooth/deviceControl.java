@@ -35,7 +35,7 @@ public class deviceControl extends AppCompatActivity {
     Intent newint;
     private ProgressDialog progress;
     private boolean isBtConnected;
-
+    private BluetoothDevice dispositivo;
     public void Disconnect(View view)
     {
         if (btSocket!=null)//if socket is connected
@@ -77,7 +77,7 @@ public class deviceControl extends AppCompatActivity {
             }
             catch (IOException e)
             {
-                msg("Error");
+                e.printStackTrace();
             }
         }
     }
@@ -95,20 +95,18 @@ public class deviceControl extends AppCompatActivity {
         newint = getIntent();
         address = newint.getStringExtra(DeviceList.EXTRA_ADDRESS);//receive the address of the connected device
 
-
-
         mBluetoothAdapter = null;
         btSocket = null;
         isBtConnected = false;
-        UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
 
         btnOn = (Button)findViewById(R.id.button2);
         btnOff = (Button)findViewById(R.id.button3);
         btnDis = (Button)findViewById(R.id.button4);
-         lumn = (TextView)findViewById(R.id.lumn);
+        lumn = (TextView) findViewById(R.id.lumn);
 
-       progress_var = 25;
-
+        progress_var = 25;
+        new ConnectBT().execute();
         brightness = (SeekBar) findViewById(seekBar);
         brightness.setMax(100);
         brightness.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
@@ -128,6 +126,7 @@ public class deviceControl extends AppCompatActivity {
                 }
                 catch (IOException e)
                 {
+
                 }
             }
         }
@@ -146,14 +145,14 @@ public class deviceControl extends AppCompatActivity {
             progress = ProgressDialog.show(deviceControl.this, "Connecting...", "Please Wait !!!");//showing a progress message
         }
         @Override
-        public Void doInBackground(Void... params)//while the progress dialog is shown connection is established in background
+        public Void doInBackground(Void... devices)//while the progress dialog is shown connection is established in background
         {
             try
             {
                 if(btSocket == null || !isBtConnected)
                 {
                     mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();//get the mobile blueooth device
-                    BluetoothDevice dispositivo = mBluetoothAdapter.getRemoteDevice(address);//connects to the device address and checks if its the desired the location of the required device
+                    dispositivo = mBluetoothAdapter.getRemoteDevice(address);//connects to the device address and checks if its the desired the location of the required device
                     btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM connection
                     BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
                     btSocket.connect();//Initiate connection
@@ -161,6 +160,7 @@ public class deviceControl extends AppCompatActivity {
             }
             catch (IOException e)
             {
+                e.printStackTrace();
                 ConnectSuccess = false;//if connection failed
             }
             return null;
