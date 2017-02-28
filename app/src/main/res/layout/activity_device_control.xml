@@ -11,72 +11,72 @@
     tools:context="com.firstapp.bluetooth.deviceControl">
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="13dp"
-        android:id="@+id/textView"
+        android:text="TextView"
         tools:text="Device  Control" />
 
     <Button
-        android:text="ON"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:id="@+id/button2"
-        android:onClick="turnOn()"
+        android:onClick="turnOn"
+        android:text="ON"
         tools:text="ON" />
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="37dp"
-        android:id="@+id/seekBar"
         android:max="@android:integer/config_longAnimTime"
-        android:progress="@android:integer/config_longAnimTime"
-        android:layout_alignParentBottom="true" />
+        android:progress="@android:integer/config_longAnimTime" />
 
     <TextView
-        android:text="Brightness Control"
+        android:id="@+id/lumn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/seekBar"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView"
         android:layout_marginBottom="18dp"
-        android:id="@+id/lumn"
+        android:text="Brightness Control"
         tools:text="Brightness" />
 
     <Button
-        android:text="OFF"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="61dp"
-        android:id="@+id/button3"
-        tools:text="OFF"
-        android:layout_below="@+id/button2"
         android:layout_alignLeft="@+id/button2"
         android:layout_alignStart="@+id/button2"
-        android:onClick="turnOff()"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="61dp"
+        android:onClick="turnOff"
+        android:text="OFF"
+        tools:text="OFF"
         />
 
     <Button
-        android:text="Disconnect"
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        tools:text="Disconnect"
-        android:layout_marginBottom="46dp"
-        android:onClick="Disconnect()"
         android:layout_above="@+id/lumn"
         android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginBottom="46dp"
+        android:onClick="Disconnect"
+        android:text="Disconnect"
+        tools:text="Disconnect" />
 </RelativeLayout>

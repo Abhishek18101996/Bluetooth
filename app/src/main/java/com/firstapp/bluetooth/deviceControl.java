@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -19,21 +20,22 @@ import java.util.UUID;
 
 public class deviceControl extends AppCompatActivity {
 
-    private ProgressDialog progress;
+    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    public String address;//receive the address of the connected device
     BluetoothAdapter mBluetoothAdapter;
     BluetoothSocket btSocket;
-    private boolean isBtConnected;
-    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
     Button btnOn;
     Button btnOff;
     Button btnDis;
     TextView lumn;
     SeekBar brightness;
     int progress_var;
+    //Receiving the address of the bluetooth device
+    Intent newint;
+    private ProgressDialog progress;
+    private boolean isBtConnected;
 
-
-    public void Disconnect()
+    public void Disconnect(View view)
     {
         if (btSocket!=null)//if socket is connected
         {
@@ -49,7 +51,7 @@ public class deviceControl extends AppCompatActivity {
         finish();//return to the device_list layout
     }
 
-    public void turnOff()
+    public void turnOff(View view)
     {
         if (btSocket!=null)
         {
@@ -64,7 +66,7 @@ public class deviceControl extends AppCompatActivity {
         }
     }
 
-    public void turnOn()
+    public void turnOn(View view)
     {
         if (btSocket!=null)
         {
@@ -78,18 +80,13 @@ public class deviceControl extends AppCompatActivity {
             }
         }
     }
+
     //jdksjlfksjdlfjslkdjflsjdlfkjslkdjfl
     private void msg(String s)
     {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
     }
-
-    //Receiving the address of the bluetooth device
-     Intent newint;
-    public String address;//receive the address of the connected device
     //view of device control
-
-
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
