@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.UUID;
 
+import static com.firstapp.bluetooth.R.id.seekBar;
+
 public class deviceControl extends AppCompatActivity {
 
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -30,7 +32,6 @@ public class deviceControl extends AppCompatActivity {
     TextView lumn;
     SeekBar brightness;
     int progress_var;
-    //Receiving the address of the bluetooth device
     Intent newint;
     private ProgressDialog progress;
     private boolean isBtConnected;
@@ -81,7 +82,6 @@ public class deviceControl extends AppCompatActivity {
         }
     }
 
-    //jdksjlfksjdlfjslkdjflsjdlfkjslkdjfl
     private void msg(String s)
     {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
@@ -109,9 +109,9 @@ public class deviceControl extends AppCompatActivity {
 
        progress_var = 25;
 
-        SeekBar   seekBar = (SeekBar) findViewById(R.id.seekBar);
-        seekBar.setMax(100);
-        seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
+        brightness = (SeekBar) findViewById(seekBar);
+        brightness.setMax(100);
+        brightness.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
         {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar){
@@ -146,7 +146,7 @@ public class deviceControl extends AppCompatActivity {
             progress = ProgressDialog.show(deviceControl.this, "Connecting...", "Please Wait !!!");//showing a progress message
         }
         @Override
-        protected Void doInBackground(Void... params)//while the progress dialog is shown connection is established in background
+        public Void doInBackground(Void... params)//while the progress dialog is shown connection is established in background
         {
             try
             {
