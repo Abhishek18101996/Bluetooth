@@ -40,8 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="37dp"
-        android:max="@android:integer/config_longAnimTime"
-        android:progress="@android:integer/config_longAnimTime" />
+        android:max="100"
+        android:progress="0"
+        android:onClick="onProgressChanged"/>
 
     <TextView
         android:id="@+id/lumn"
