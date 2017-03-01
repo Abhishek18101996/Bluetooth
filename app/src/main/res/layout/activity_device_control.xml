@@ -40,9 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="37dp"
-        android:max="100"
-        android:progress="0"
-        android:onClick="onProgressChanged"/>
+        android:max="9"
+        android:onClick="onProgressChanged"
+        android:progress="0" />
 
     <TextView
         android:id="@+id/lumn"
@@ -53,6 +53,8 @@
         android:layout_alignStart="@+id/textView"
         android:layout_marginBottom="18dp"
         android:text="Brightness Control"
+
+
         tools:text="Brightness" />
 
     <Button

@@ -58,7 +58,7 @@ public class deviceControl extends AppCompatActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("TF".toString().getBytes());
+                btSocket.getOutputStream().write("0".toString().getBytes());
             }
             catch (IOException e)
             {
@@ -73,7 +73,7 @@ public class deviceControl extends AppCompatActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("TO".toString().getBytes());
+                btSocket.getOutputStream().write("1".toString().getBytes());
             }
             catch (IOException e)
             {
@@ -105,10 +105,10 @@ public class deviceControl extends AppCompatActivity {
         btnDis = (Button)findViewById(R.id.button4);
         lumn = (TextView) findViewById(R.id.lumn);
 
-        progress_var = 25;
+        progress_var = 5;
         new ConnectBT().execute();
         brightness = (SeekBar) findViewById(seekBar);
-        brightness.setMax(100);
+        brightness.setMax(9);
         brightness.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
         {
             @Override
