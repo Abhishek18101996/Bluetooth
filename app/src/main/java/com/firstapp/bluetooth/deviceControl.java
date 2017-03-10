@@ -73,7 +73,7 @@ public class deviceControl extends AppCompatActivity {
         {
             try
             {
-                btSocket.getOutputStream().write("1".toString().getBytes());
+                btSocket.getOutputStream().write("9".toString().getBytes());
             }
             catch (IOException e)
             {
